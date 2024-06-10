@@ -1,0 +1,9 @@
+{
+    "configuration": "FlashFreq=80,PartitionScheme=default,CPUFreq=240,UploadSpeed=921600,DebugLevel=none,EraseFlash=none",
+    "board": "esp32:esp32:d1_mini32",
+    "port": "COM6",
+    "sketch": "./OpenAG/OpenAG.ino",
+    "programmer": "esptool",
+    "output": "./build",
+    "postbuild": "copy .\\build\\OpenAG.ino.bin ."
+}
