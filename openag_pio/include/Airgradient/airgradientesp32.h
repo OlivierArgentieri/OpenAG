@@ -67,13 +67,13 @@ inline Airgradientesp32::Airgradientesp32() {
     });
   };
 
-  WebInterface::GetInstance().metricsHandler = [this]() -> String {
-    String aaa = "";
-    //aaa += this->sgp30.GetPrometheusData();
-    aaa += this->sht4x.GetPrometheusData();
-    aaa += this->s8sensair.GetPrometheusData();
-    return aaa;
-  };
+  // WebInterface::GetInstance().metricsHandler = [this]() -> String {
+  //   String aaa = "";
+  //   //aaa += this->sgp30.GetPrometheusData();
+  //   aaa += this->sht4x.GetPrometheusData();
+  //   aaa += this->s8sensair.GetPrometheusData();
+  //   return aaa;
+  // };
 
   oled.pages.push_back(
     [this](SSD1306& SSD1306) {
