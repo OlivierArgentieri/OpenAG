@@ -53,4 +53,21 @@ class WebInterface: public BaseComponent, public Singleton<WebInterface> {
     static inline AsyncWebServer* server = nullptr;
     HandlerAction currentStatuts = HandlerAction::NONE;
 };
+
+/**
+ * Inline public methods
+ */
+
+inline void WebInterface::Loop(const float dt)
+{
+  if (currentStatuts == HandlerAction::NONE)
+    return;  
+
+  if (currentStatuts == HandlerAction::LISTNETWORKS)
+  {
+    String aa;
+    CreateWebUI(aa);
+  }
+}
+
 #endif

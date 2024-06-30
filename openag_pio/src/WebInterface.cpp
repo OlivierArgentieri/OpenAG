@@ -80,17 +80,6 @@ void WebInterface::Setup()
   server->begin(); 
 }
 
-void WebInterface::Loop(const float dt)
-{
-  if (currentStatuts == HandlerAction::NONE)
-    return;  
-
-  if (currentStatuts == HandlerAction::LISTNETWORKS)
-  {
-    String aa;
-    CreateWebUI(aa);
-  }
-}
 /**
 * Private Methods
 */
