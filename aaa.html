@@ -2,7 +2,6 @@
 <html>
 
 <style type="text/css">
-
     :root {
         --primary-color: #282C34;
         --secondary-color: #272C33;
@@ -18,6 +17,18 @@
 
     .shadow {
         box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    }
+
+    .focuser {
+        width: 100%;
+        height: 100%;
+        z-index: 8;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+    }
+
+    h1, h2, h3, h4, h5, h6, p, a, label {
+        color: var(--text-color);
     }
 
     body {
@@ -52,7 +63,7 @@
             background-color: var(--secondarya-color);
         }
 
-        & > a {
+        &>a {
             margin: 0;
             padding: 0;
             font-size: 1rem;
@@ -71,10 +82,6 @@
         height: 100%;
         margin-top: 5rem;
         gap: 1rem;
-
-        & > h1 {
-            color: var(--text-color);
-        }
     }
 
     .card-container {
@@ -95,36 +102,38 @@
         padding: 1rem;
         width: 40%;
         transition: all 0.3s;
-        & > .card-header {
+
+        &>.card-header {
             display: flex;
             flex-direction: row;
-            & > h2 {
+
+            &>h2 {
                 color: var(--text-color);
             }
         }
 
-        & > .card-body {
+        &>.card-body {
             display: flex;
             flex-direction: column;
             gap: 0;
             margin: 0;
             padding: 0;
 
-            & > p {
+            &>p {
                 margin: 0;
                 padding: 0;
                 color: var(--text-color);
             }
         }
 
-        & > .card-action {
+        &>.card-action {
             display: flex;
             flex-direction: row;
             gap: .25rem;
             margin-top: 1rem;
             justify-content: flex-end;
 
-            & > button {
+            &>button {
                 padding: .5rem 1rem;
                 border-radius: .5rem;
                 color: var(--text-color);
@@ -132,9 +141,10 @@
                 background: none;
                 border: none;
                 cursor: pointer;
-                
+
                 background-color: var(--secondarya-color);
                 color: var(--text-color) *-1;
+
                 &:hover {
                     background-color: var(--secondarya-hover-color);
                 }
@@ -142,86 +152,234 @@
         }
     }
 
+    .form-popup {
+        display: flex;
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+        z-index: 9;
+        opacity: 0.9;
+    }
+
+    .form-container {
+        flex-direction: column;
+        display: flex;
+
+        max-width: 300px;
+        padding: 10px;
+        background-color: var(--secondary-color);
+
+        label {
+            color: var(--text-color);
+        }
+
+        &>.form-action {
+            display: flex;
+            flex-direction: row;
+            gap: .25rem;
+            margin-top: 1rem;
+            justify-content: flex-end;
+
+            &>button {
+                padding: .5rem 1rem;
+                border-radius: .5rem;
+                color: var(--text-color);
+                transition: all 0.1s;
+                background: none;
+                border: none;
+                cursor: pointer;
+
+                background-color: var(--secondarya-color);
+                color: var(--text-color) *-1;
+
+                &:hover {
+                    background-color: var(--secondarya-hover-color);
+                }
+            }
+        }
+    }
+
+    /* Full-width input fields */
+    .form-container input[type=text],
+    .form-container input[type=password] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+    }
+
+    .form-container input[type=text]:focus,
+    .form-container input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+
+    /* Add a red background color to the cancel button */
+    .form-container .cancel {
+        background-color: red;
+    }
+
+    /* Add some hover effects to buttons */
+    .form-container .btn:hover,
+    .open-button:hover {
+        opacity: 1;
+    }
 </style>
+<script>
+    function openForm() {
+        document.getElementById("focuser").classList.add("focuser");
+        document.getElementById("myForm").style.display = "flex";
+    }
+
+    function closeForm() {
+        document.getElementById("focuser").classList.remove("focuser");
+        document.getElementById("myForm").style.display = "none";
+    }
+
+</script>
 
 <head>
 
 </head>
 
-<body>
+
+<body id="body">
+    <div id="focuser"></div>
+    <!-- form connect-->
+    <div class="form-popup" id="myForm">
+        <form action="/" class="card">
+            <div class="card-header">
+                <h2>Connect to <span id="ssid_field"></span></h2>
+            </div>
+            <div class="card-body" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <div style="
+                    display: flex;
+                    flex-direction: row;
+                    gap: 1rem;
+                    flex-wrap: wrap;
+                ">
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password">
+                </div>
+                <div style="
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+                flex-wrap: wrap;
+            ">
+                    <label for="ipaddr"><b>Ip address</b></label>
+                    <input type="text" placeholder="x.x.x.x" name="ipaddr">
+                </div>
+
+                <div style="
+                    display: flex;
+                    flex-direction: row;
+                    gap: 1rem;
+                    flex-wrap: wrap;
+
+                ">
+                    <label for="mask"><b>Mask</b></label>
+                    <input type="text" placeholder="x.x.x.x" name="mask">
+                </div>
+                <div style="
+                    display: flex;
+                    flex-direction: row;
+                    gap: 1rem;
+                    flex-wrap: wrap;
+
+                ">
+
+                    <label for="gateway"><b>gateway</b></label>
+                    <input type="text" placeholder="x.x.x.x" name="gateway">
+                </div>  
+            </div>
+            <div class="card-action">
+                <button type="submit" class="btn">Login</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- Header -->
     <div class="header-container shadow">
         <div class="header-item">
-            <a href="#">Main</a>   
+            <a href="#">Main</a>
         </div>
         <div class="header-item">
             <a href="#">Network</a>
         </div>
         <div class="header-item">
-            <a href="#">Other</a>   
+            <a href="#">Other</a>
         </div>
     </div>
 
+    <!-- Network Body -->
     <div class="main-container">
         <h1 style="display: flex;">Available Networks</h1>
-    
+
         <div class="card-container">
-        <div class="card shadow">
-            <div class="card-header">
-                <h2>Wifi 1</h2>
-            </div>
-            <div class="card-body">
-                <p>Signal Strength: 100%</p>
-                <p>Security: WPA2</p>
-                <p>Channel: 6</p>
-            </div>
-            
-            <div class="card-action">
-                <button>Connect</button>
-            </div>
-        </div>
-        
-        <div class="card shadow">
-            <div class="card-header">
-                <h2>Wifi 1</h2>
-            </div>
-            <div class="card-body">
-                <p>Signal Strength: 100%</p>
-                <p>Security: WPA2</p>
-                <p>Channel: 6</p>
-            </div>
-            <div class="card-action">
-                <button>Connect</button>
-            </div>
-        </div>
+            <div class="card shadow">
+                <div class="card-header">
+                    <h2>Wifi 1</h2>
+                </div>
+                <div class="card-body">
+                    <p>Signal Strength: 100%</p>
+                    <p>Security: WPA2</p>
+                    <p>Channel: 6</p>
+                </div>
 
-        <div class="card shadow">
-            <div class="card-header">
-                <h2>Wifi 1</h2>
+                <div class="card-action">
+                    <button onclick="openForm('testssid')">Connect</button>
+                </div>
             </div>
-            <div class="card-body">
-                <p>Signal Strength: 100%</p>
-                <p>Security: WPA2</p>
-                <p>Channel: 6</p>
-            </div>
-            <div class="card-action">
-                <button>Connect</button>
-            </div>
-        </div>
 
-        <div class="card shadow">
-            <div class="card-header">
-                <h2>Wifi 1</h2>
+            <div class="card shadow">
+                <div class="card-header">
+                    <h2>Wifi 1</h2>
+                </div>
+                <div class="card-body">
+                    <p>Signal Strength: 100%</p>
+                    <p>Security: WPA2</p>
+                    <p>Channel: 6</p>
+                </div>
+                <div class="card-action">
+                    <button>Connect</button>
+                </div>
             </div>
-            <div class="card-body">
-                <p>Signal Strength: 100%</p>
-                <p>Security: WPA2</p>
-                <p>Channel: 6</p>
+
+            <div class="card shadow">
+                <div class="card-header">
+                    <h2>Wifi 1</h2>
+                </div>
+                <div class="card-body">
+                    <p>Signal Strength: 100%</p>
+                    <p>Security: WPA2</p>
+                    <p>Channel: 6</p>
+                </div>
+                <div class="card-action">
+                    <button>Connect</button>
+                </div>
             </div>
-            <div class="card-action">
-                <button>Connect</button>
+
+            <div class="card shadow">
+                <div class="card-header">
+                    <h2>Wifi 1</h2>
+                </div>
+                <div class="card-body">
+                    <p>Signal Strength: 100%</p>
+                    <p>Security: WPA2</p>
+                    <p>Channel: 6</p>
+                </div>
+                <div class="card-action">
+                    <button>Connect</button>
+                </div>
             </div>
         </div>
-    </div>
         <p>aaa</p>
         lorem ipsum dolor sit amet consectetur adipisicing elit
         lorem ipsum dolor sit amet consectetur adipisicing elit
@@ -405,4 +563,3 @@
 
 
 </html>
-
