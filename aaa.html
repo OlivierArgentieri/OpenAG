@@ -68,7 +68,6 @@
             padding: 0;
             font-size: 1rem;
             font-weight: 500;
-            color: var(--text-color);
             text-decoration: none;
         }
     }
@@ -100,33 +99,28 @@
         border-radius: 2rem;
         background-color: var(--secondary-color);
         padding: 1rem;
-        width: 40%;
+        width: 200px;
         transition: all 0.3s;
 
-        &>.card-header {
+        & >.card-header {
             display: flex;
             flex-direction: row;
-
-            &>h2 {
-                color: var(--text-color);
-            }
         }
 
-        &>.card-body {
+        & > .card-body {
             display: flex;
             flex-direction: column;
             gap: 0;
             margin: 0;
             padding: 0;
 
-            &>p {
+            & > p {
                 margin: 0;
                 padding: 0;
-                color: var(--text-color);
             }
         }
 
-        &>.card-action {
+        & > .card-action {
             display: flex;
             flex-direction: row;
             gap: .25rem;
@@ -165,25 +159,48 @@
     }
 
     .form-container {
-        flex-direction: column;
         display: flex;
-
-        max-width: 300px;
-        padding: 10px;
+        flex-direction: column;
+        border-radius: 2rem;
         background-color: var(--secondary-color);
-
-        label {
-            color: var(--text-color);
+        padding: 1rem;
+        width: 200px;
+        transition: all 0.3s;
+        
+        & > .form-header {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            justify-content: center;
         }
 
-        &>.form-action {
+        & > .form-body {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+            gap: .5rem;
+            justify-content: center;
+
+            & > input {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin: 0 !important;
+                padding: 4px !important;
+                max-width: fit-content;
+            }
+
+        }
+        & > .form-action {
             display: flex;
             flex-direction: row;
             gap: .25rem;
             margin-top: 1rem;
             justify-content: flex-end;
-
-            &>button {
+            
+            & > button {
                 padding: .5rem 1rem;
                 border-radius: .5rem;
                 color: var(--text-color);
@@ -251,53 +268,22 @@
     <div id="focuser"></div>
     <!-- form connect-->
     <div class="form-popup" id="myForm">
-        <form action="/" class="card">
-            <div class="card-header">
+        <form action="/" class="form-container" style="width: 500px;">
+            <div class="form-header">
                 <h2>Connect to <span id="ssid_field"></span></h2>
             </div>
-            <div class="card-body" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <div style="
-                    display: flex;
-                    flex-direction: row;
-                    gap: 1rem;
-                    flex-wrap: wrap;
-                ">
-                    <label for="password"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password">
-                </div>
-                <div style="
-                display: flex;
-                flex-direction: row;
-                gap: 1rem;
-                flex-wrap: wrap;
-            ">
-                    <label for="ipaddr"><b>Ip address</b></label>
-                    <input type="text" placeholder="x.x.x.x" name="ipaddr">
-                </div>
+            <div class="form-body" style="">
+                <input type="password" placeholder="Password" name="password">
 
-                <div style="
-                    display: flex;
-                    flex-direction: row;
-                    gap: 1rem;
-                    flex-wrap: wrap;
+                <input type="text" placeholder="ipAddress" name="ipaddr">
 
-                ">
-                    <label for="mask"><b>Mask</b></label>
-                    <input type="text" placeholder="x.x.x.x" name="mask">
-                </div>
-                <div style="
-                    display: flex;
-                    flex-direction: row;
-                    gap: 1rem;
-                    flex-wrap: wrap;
+                <input type="text" placeholder="Mask" name="mask">
 
-                ">
+                <input type="text" placeholder="Gateway" name="gateway">
 
-                    <label for="gateway"><b>gateway</b></label>
-                    <input type="text" placeholder="x.x.x.x" name="gateway">
-                </div>  
+                <input type="text" placeholder="Hostname" name="hostname">
             </div>
-            <div class="card-action">
+            <div class="form-action">
                 <button type="submit" class="btn">Login</button>
                 <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             </div>
