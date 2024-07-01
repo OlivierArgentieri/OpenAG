@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+
+<style type="text/css">
+
+    :root {
+        --primary-color: #282C34;
+        --secondary-color: #272C33;
+        --secondarya-color: #C7CCD6;
+        --secondarya-hover-color: #c7ccd6ad;
+        --text-color: #ABB2BF;
+        --background: #23272E;
+
+        --tw-ring-offset-shadow: 0 0 #0000;
+        --tw-ring-shadow: 0 0 #0000;
+        --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -4px rgba(0, 0, 0, .1);
+    }
+
+    .shadow {
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        font-family: 'Calibri', sans-serif;
+        background-color: var(--background);
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        background-color: var(--primary-color);
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .header-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin: .25rem;
+
+        &:hover {
+            background-color: var(--secondarya-color);
+        }
+
+        & > a {
+            margin: 0;
+            padding: 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        margin-top: 5rem;
+        gap: 1rem;
+
+        & > h1 {
+            color: var(--text-color);
+        }
+    }
+
+    .card-container {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 2rem;
+        background-color: var(--secondary-color);
+        padding: 1rem;
+        width: 40%;
+        transition: all 0.3s;
+        & > .card-header {
+            display: flex;
+            flex-direction: row;
+            & > h2 {
+                color: var(--text-color);
+            }
+        }
+
+        & > .card-body {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 0;
+            padding: 0;
+
+            & > p {
+                margin: 0;
+                padding: 0;
+                color: var(--text-color);
+            }
+        }
+
+        & > .card-action {
+            display: flex;
+            flex-direction: row;
+            gap: .25rem;
+            margin-top: 1rem;
+            justify-content: flex-end;
+
+            & > button {
+                padding: .5rem 1rem;
+                border-radius: .5rem;
+                color: var(--text-color);
+                transition: all 0.1s;
+                background: none;
+                border: none;
+                cursor: pointer;
+                
+                background-color: var(--secondarya-color);
+                color: var(--text-color) *-1;
+                &:hover {
+                    background-color: var(--secondarya-hover-color);
+                }
+            }
+        }
+    }
+
+</style>
+
+<head>
+
+</head>
+
+<body>
+    <div class="header-container shadow">
+        <div class="header-item">
+            <a href="#">Main</a>   
+        </div>
+        <div class="header-item">
+            <a href="#">Network</a>
+        </div>
+        <div class="header-item">
+            <a href="#">Other</a>   
+        </div>
+    </div>
+
+    <div class="main-container">
+        <h1 style="display: flex;">Available Networks</h1>
+    
+        <div class="card-container">
+        <div class="card shadow">
+            <div class="card-header">
+                <h2>Wifi 1</h2>
+            </div>
+            <div class="card-body">
+                <p>Signal Strength: 100%</p>
+                <p>Security: WPA2</p>
+                <p>Channel: 6</p>
+            </div>
+            
+            <div class="card-action">
+                <button>Connect</button>
+            </div>
+        </div>
+        
+        <div class="card shadow">
+            <div class="card-header">
+                <h2>Wifi 1</h2>
+            </div>
+            <div class="card-body">
+                <p>Signal Strength: 100%</p>
+                <p>Security: WPA2</p>
+                <p>Channel: 6</p>
+            </div>
+            <div class="card-action">
+                <button>Connect</button>
+            </div>
+        </div>
+
+        <div class="card shadow">
+            <div class="card-header">
+                <h2>Wifi 1</h2>
+            </div>
+            <div class="card-body">
+                <p>Signal Strength: 100%</p>
+                <p>Security: WPA2</p>
+                <p>Channel: 6</p>
+            </div>
+            <div class="card-action">
+                <button>Connect</button>
+            </div>
+        </div>
+
+        <div class="card shadow">
+            <div class="card-header">
+                <h2>Wifi 1</h2>
+            </div>
+            <div class="card-body">
+                <p>Signal Strength: 100%</p>
+                <p>Security: WPA2</p>
+                <p>Channel: 6</p>
+            </div>
+            <div class="card-action">
+                <button>Connect</button>
+            </div>
+        </div>
+    </div>
+        <p>aaa</p>
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipislorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipislorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipislorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipislorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipislorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipislorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipislorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipislorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipislorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+        lorem ipsum dolor sit amet consectetur adipisicing elit
+    </div>
+</body>
+
+
+
+</html>
+
