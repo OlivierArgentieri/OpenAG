@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AG Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<script>
+    function openForm(data) {
+        document.getElementById("ssid_field").innerHTML = data.ssid_field;
+        document.getElementById("focuser").classList.add("focuser");
+        document.getElementById("myForm").style.display = "flex";
+    }
+
+    function closeForm() {
+        document.getElementById("focuser").classList.remove("focuser");
+        document.getElementById("myForm").style.display = "none";
+    }
+
+</script>
+
+
+<body id="body">
+    <div id="focuser"></div>
+    <!-- form connect-->
+    <div class="form-popup" id="myForm">
+        <form action="/" class="form-container" style="width: 500px;">
+            <div class="form-header">
+                <h2>Connect to <span id="ssid_field"></span></h2>
+            </div>
+            <div class="form-body" style="">
+                <input type="password" placeholder="Password" name="password">
+
+                <input type="text" placeholder="ipAddress" name="ipaddr">
+
+                <input type="text" placeholder="Mask" name="mask">
+
+                <input type="text" placeholder="Gateway" name="gateway">
+
+                <input type="text" placeholder="Hostname" name="hostname">
+            </div>
+            <div class="form-action">
+                <button type="submit" class="btn">Login</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- Header -->
+    <div class="header-container shadow">
+        <div class="header-item">
+            <a href="#">Main</a>
+        </div>
+        <div class="header-item">
+            <a href="#">Network</a>
+        </div>
+        <div class="header-item">
+            <a href="#">Other</a>
+        </div>
+    </div>
+
+    <!-- Network Body -->
+    <div class="main-container">
+        <h1 style="display: flex;">Available Networks</h1>
+        <div class="card-container">
+            %WIFI_CONTAINER%
+        </div>
+    </div>
+</body>
+
+</html>

@@ -5,13 +5,51 @@
 #include "utils/WMEEPROM.h"
 #include "utils/WMLog.h"
 #include "components/ESPWIFI.h"
+#include "SPIFFS.h"
+
+/**
+ * Private Methods
+ */
+
+String WebInterface::ProcessTemplate(const String& templateContent)
+{
+  if (templateContent == "WIFI_CONTAINER") {
+    std::vector<WMNetworkData> availableNetworks;
+    ESPWIFI::GetInstance().GetAvailableNetworks(availableNetworks);
+    String content = "";
+    for (const WMNetworkData& network: availableNetworks ) {
+      content += "<div class='card shadow'>";
+
+      content += "<div class='card-header'>";
+      content += "<h2>" + network.ssid + "</h2>";
+      content += "</div>";
+      
+      content += "<div class='card-body'>";
+      content += "<p>Signal Strength: " + network.rssi + "</p>";
+      content += "<p>Security: " + network.open ? "Open</p>" : "Closed</p>";
+      content += "</div>";
+
+      content += "<div class='card-action'>";
+      content += "<button onclick=\"openForm({'ssid_field':'" + network.ssid + "'})\">Connect</button>";
+      content += "</div>";
+      content += "</div>";
+    }
+    return content;
+  }
+  return "";
+}
+
 
 /**
 * Public Methods
 */
 
 void WebInterface::Setup()
-{ 
+{
+  if(!SPIFFS.begin(true)){
+    return;
+  }
+
   // Scan once
   ESPWIFI::GetInstance().Scan();
 
@@ -26,6 +64,17 @@ void WebInterface::Setup()
       request->send(200, "text/html", content);
     });
 
+    server->on("/wip", HTTP_GET, [&](AsyncWebServerRequest *request) 
+    {
+      request->send(SPIFFS, "/index.html", String(), false, [this](const String& var){
+        return this->ProcessTemplate(var);
+      });
+    });
+
+    server->on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request){
+      request->send(SPIFFS, "/style.css", "text/css");
+    });
+    
     server->on("/rescan", HTTP_GET, [&](AsyncWebServerRequest *request) 
     {
       if (rescanHandler)

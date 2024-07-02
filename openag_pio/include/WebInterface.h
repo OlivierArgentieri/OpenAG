@@ -5,6 +5,7 @@
 #include "./base/BaseComponent.h"
 #include "./base/Singleton.h"
 #include "./utils/WMHandlers.h"
+#include "SPIFFS.h"
 
 class AsyncWebServer;
 
@@ -37,7 +38,10 @@ class WebInterface: public BaseComponent, public Singleton<WebInterface> {
 
     /** Create routes */
     void CreateRoutes();
-  
+
+    /** Process tempalte variable */
+    String ProcessTemplate(const String& templateContent);
+    
   public:
     /**
      * Public Handlers
