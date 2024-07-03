@@ -6,6 +6,7 @@
 #include "utils/WMLog.h"
 #include "components/ESPWIFI.h"
 #include "SPIFFS.h"
+#include <stdlib.h> 
 
 /**
  * Private Methods
@@ -21,16 +22,19 @@ String WebInterface::ProcessTemplate(const String& templateContent)
       content += "<div class='card shadow'>";
 
       content += "<div class='card-header'>";
-      content += "<h2>" + network.ssid + "</h2>";
+      content += "<h2>" + (network.ssid ? network.ssid : "Unknown") + "</h2>";
       content += "</div>";
       
       content += "<div class='card-body'>";
-      content += "<p>Signal Strength: " + network.rssi + "</p>";
+      content += "<p>Signal Strength: " + String(((network.rssi.toInt() * -1))) + "\%</p>";
       content += "<p>Security: " + network.open ? "Open</p>" : "Closed</p>";
       content += "</div>";
 
       content += "<div class='card-action'>";
-      content += "<button onclick=\"openForm({'ssid_field':'" + network.ssid + "'})\">Connect</button>";
+      
+      String data = "{'ssid_field':'" + network.ssid + "', 'open_field': " + (network.open ? 'true' : 'false') + " }";
+
+      content += "<button onclick=\"openForm(" + data + ")\">Connect</button>";
       content += "</div>";
       content += "</div>";
     }
@@ -57,14 +61,6 @@ void WebInterface::Setup()
   server = new AsyncWebServer(80);
   {
     server->on("/", HTTP_GET, [&](AsyncWebServerRequest *request) 
-    {
-      String content;
-      
-      CreateWebUI(content);      
-      request->send(200, "text/html", content);
-    });
-
-    server->on("/wip", HTTP_GET, [&](AsyncWebServerRequest *request) 
     {
       request->send(SPIFFS, "/index.html", String(), false, [this](const String& var){
         return this->ProcessTemplate(var);
@@ -101,10 +97,10 @@ void WebInterface::Setup()
         request->getParam(4)->value(), // gateway
         "", // first_dns
         "", // second_dns
-        request->getParam(1)->value(), // ssid
-        request->getParam(0)->value(), // password
-        request->getParam(5)->value(), // hostname
+        request->getParam(0)->value(), // ssid
+        request->getParam(1)->value(), // password
         "", // rssi
+        request->getParam(5)->value(), // hostname
         false // open
       };
 

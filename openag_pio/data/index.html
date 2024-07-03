@@ -10,6 +10,7 @@
 <script>
     function openForm(data) {
         document.getElementById("ssid_field").innerHTML = data.ssid_field;
+        document.getElementById("ssid_displayed").innerHTML = data.ssid_field;
         document.getElementById("focuser").classList.add("focuser");
         document.getElementById("myForm").style.display = "flex";
     }
@@ -26,20 +27,23 @@
     <div id="focuser"></div>
     <!-- form connect-->
     <div class="form-popup" id="myForm">
-        <form action="/connect" class="form-container" style="width: 500px;" method="post">
+        <form action="/connect" class="form-container" style="width: fit-content; max-width: 40rem;" method="post">
             <div class="form-header">
-                <h2>Connect to <span id="ssid_field"></span></h2>
+                <h2>Connect to <span id="ssid_displayed"></span></h2>
             </div>
             <div class="form-body" style="">
+                <input type="hidden" name="ssid" id="ssid_field" readonly>
                 <input type="password" placeholder="Password" name="password">
 
-                <input type="text" placeholder="ipAddress" name="ipaddr">
+                <input type="text" placeholder="ipAddress" name="ipaddr" required>
 
-                <input type="text" placeholder="Mask" name="mask">
+                <input type="text" placeholder="Mask" name="mask" required>
 
                 <input type="text" placeholder="Gateway" name="gateway">
-
                 <input type="text" placeholder="Hostname" name="hostname">
+
+                <input type="hidden" name="open" id="open_field" readonly>
+
             </div>
             <div class="form-action">
                 <button type="submit" class="btn">Login</button>
@@ -67,6 +71,28 @@
         <h1 style="display: flex;">Available Networks</h1>
         <div class="card-container">
             %WIFI_CONTAINER%
+        </div>
+
+        <div class="card-container">
+            <form action="/connect" class="form-container" style="width: fit-content; max-width: 40rem;" method="post">
+                <div class="form-header">
+                    <h2>Static <span id="ssid_displayed"></span></h2>
+                </div>
+                <div class="form-body" style="">
+                    <input type="text" name="ssid" placeholder="SSID" required>
+                    <input type="password" placeholder="Password" name="password">
+
+                    <input type="text" placeholder="IPAddress" name="ipaddr" required>
+
+                    <input type="text" placeholder="Mask" name="mask" required>
+
+                    <input type="text" placeholder="Gateway" name="gateway">
+                    <input type="text" placeholder="Hostname" name="hostname">
+                </div>
+                <div class="form-action">
+                    <button type="submit" class="btn">Login</button>
+                </div>
+            </form>
         </div>
     </div>
 </body>

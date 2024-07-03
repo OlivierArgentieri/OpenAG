@@ -77,7 +77,7 @@ struct WMNetworkData {
 
   // is_static_configured
   bool isStaticConfigured() const {
-    return localIP != IPAddress(0, 0, 0, 0) && mask != IPAddress(0, 0, 0, 0) && gateway != IPAddress(0, 0, 0, 0);
+    return localIP != IPAddress(0, 0, 0, 0) && mask != IPAddress(0, 0, 0, 0);
   }
 };
 

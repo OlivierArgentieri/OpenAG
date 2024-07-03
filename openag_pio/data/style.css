@@ -87,6 +87,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-top: 2rem;
+    padding: 2rem;
 }
 
 .card {
