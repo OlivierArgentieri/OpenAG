@@ -1,10 +1,9 @@
 {
-    "version": "v1.0.0",
+    "version": "v0.0.0",
     "plaform": "esp32",
     "files": [
         { "name": "bootloader.bin", "offset": "0x1000"},
         { "name": "firmware.bin", "offset": "0x10000"},
-        { "name": "partitions.bin", "offset": "0x8000"},
-        { "name": "spiffs.bin", "offset": "0x00290000"} 
+        { "name": "partitions.bin", "offset": "0x8000"}
     ]
 }
