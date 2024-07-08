@@ -29,10 +29,11 @@ class Airgradientesp32: public WMBaseComponent<Airgradientesp32> {
 
 inline Airgradientesp32::Airgradientesp32() {
   // init components
-  this->components = { 
+  this->components = {
     &oled,
-    &s8sensair,
     &sht4x,
+    &sgp30,
+    &s8sensair,
     &ESPWIFI::GetInstance(),
     &WebInterface::GetInstance(),
   };
@@ -68,11 +69,11 @@ inline Airgradientesp32::Airgradientesp32() {
   };
 
   WebInterface::GetInstance().metricsHandler = [this]() -> String {
-    String aaa = "";
-    //aaa += this->sgp30.GetPrometheusData();
-    aaa += this->sht4x.GetPrometheusData();
-    aaa += this->s8sensair.GetPrometheusData();
-    return aaa;
+    String str_metric = "";
+    str_metric += this->sgp30.GetPrometheusData();
+    str_metric += this->sht4x.GetPrometheusData();
+    str_metric += this->s8sensair.GetPrometheusData();
+    return str_metric;
   };
 
   oled.pages.push_back(
@@ -85,26 +86,5 @@ inline Airgradientesp32::Airgradientesp32() {
       .Update();
   });
 }
-
-
-// inline void Airgradientesp32::setup() {
-//   SSD1306::GetInstance().Setup();
-
-//   ESPWIFI::GetInstance().Setup();
-//   SGP30::GetInstance().Setup();
-//   WebInterface::GetInstance().Setup();
-//   SHT4X::GetInstance().Setup();
-//   S8Sensair::GetInstance().Setup();
-//   SSD1306::GetInstance().DisplayMessage(ESPWIFI::GetInstance().GetLocalIP().toString());
-// }
-
-// inline void Airgradientesp32::loop() {
-//   SGP30::GetInstance().Loop();
-//   SHT4X::GetInstance().Loop();
-//   S8Sensair::GetInstance().Loop();
-//   WebInterface::GetInstance().Loop();
-
-//   DELAY(1000);
-// }
 
 #endif

@@ -1,6 +1,6 @@
 # Alternative firmware for Airgradient DIY sensor
 
-Prototype firmware for the Airgradient DIY sensor.
+Prototype firmware for another custom Airgradient DIY sensor, but this time, with Prometheus compatible metrics.
 
 ## Features
 
@@ -12,21 +12,17 @@ Prototype firmware for the Airgradient DIY sensor.
 
 ## Supported Hardware
 
-- S8 sensor
+- S8sensair sensor
 - ESP32 (d1 mini)
 - SSD1306 OLED Display
 - SGP30 sensor
 - SHT4x sensor
 
-## Dependencies
+## How to install
 
-Add library: `https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json`
-- asyncTCP
-- ESPAsyncWebServer
-- ESPSoftwareSerial
-- Adafruit GFX Library
-- Adafruit SSD1306
-- Adagruit SGP30
+You can use [this custom web flasher](https://olivierargentieri.github.io/OpenAGFlasher/)
+
+If it's your time flashing the firmware, at the end connect to the wifi network `airgradient` and set your wifi credentials via the web interface (`192.168.4.1`)
 
 ## Pictures
 

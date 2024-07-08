@@ -78,7 +78,6 @@ inline void SGP30::Loop(const float dt) {
 
   this->latest_data.TVOC = sgp.TVOC;
   this->latest_data.eCO2 = sgp.eCO2;
-  DELAY(1000);
 }
 
 inline String SGP30::GetPrometheusData() const {
