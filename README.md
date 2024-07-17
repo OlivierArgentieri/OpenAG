@@ -22,10 +22,11 @@ Prototype firmware for another custom Airgradient DIY sensor, but this time, wit
 
 You can use [this custom web flasher](https://olivierargentieri.github.io/OpenAGFlasher/)
 
-If it's your time flashing the firmware, at the end connect to the wifi network `airgradient` and set your wifi credentials via the web interface (`192.168.4.1`)
+If it's your first time flashing the firmware, at the end connect to the wifi hotspot network `airgradient` and set your wifi credentials via the web interface on `192.168.4.1`.
 
 ## Pictures
 
 ![Official Airgradient PCB](./img/AGPCB.png)
+![Custom PCB](./img/AGPCB.jpg)
 ![Prometheus Data](./img/metrics.png)
 ![grafana](./img/grafana.png)
