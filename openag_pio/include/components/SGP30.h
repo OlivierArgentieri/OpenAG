@@ -14,7 +14,10 @@ struct SGP30Data {
   uint16_t TVOC = 0;
   uint16_t eCO2 = 0;
 
-  SGP30Data(uint16_t TVOC=0, uint16_t eCO2=0) {
+  SGP30Data(
+    uint16_t TVOC=0,
+    uint16_t eCO2=0,
+    ) {
     this->TVOC = TVOC;
     this->eCO2 = eCO2;
   }
@@ -76,6 +79,7 @@ inline void SGP30::Loop(const float dt) {
     return;
   }
 
+  sgp.IAQmeasureRaw();
   this->latest_data.TVOC = sgp.TVOC;
   this->latest_data.eCO2 = sgp.eCO2;
 }
@@ -90,7 +94,7 @@ inline String SGP30::GetPrometheusData() const {
   values += this->GeneratePrometheusData(
     "eCO2",
     String(this->latest_data.eCO2),
-    "eCO2"
+    "ppm"
   );
   return values;
 }
