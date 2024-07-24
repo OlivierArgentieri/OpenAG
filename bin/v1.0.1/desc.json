@@ -1,0 +1,11 @@
+{
+  "version": "v1.0.1",
+  "plaform": "esp32",
+  "files": {
+    "merged": { "name": "merged_firmware.bin", "offset": "0x0" },
+    "partitions": { "name": "partitions.bin", "offset": "0x8000" },
+    "bootloader": { "name": "bootloader.bin", "offset": "0x1000" },
+    "spiffs": { "name": "spiffs.bin", "offset": "0x290000" },
+    "firmware": { "name": "firmware.bin", "offset": "0x10000" }
+  }
+}

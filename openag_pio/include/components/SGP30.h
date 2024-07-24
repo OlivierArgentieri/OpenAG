@@ -2,6 +2,7 @@
 #define SGP30_H
 
 #include <Adafruit_SGP30.h>
+#include "../utils/WMLog.h"
 #include "../utils/WMUtils.h"
 #include "../base/BaseComponent.h"
 #include "../base/IPrometheusable.h"
@@ -99,6 +100,8 @@ inline void SGP30::Loop(const float dt) {
   if (refreshCounter > refreshDelay) {
     refreshCounter = 0;
     if (!onRequestUpdateHumidity) return;
+    LOG_INFO("Updating humidity");
+
     sgp.setHumidity(doubleToFixedPoint(onRequestUpdateHumidity()));
   }
 }
