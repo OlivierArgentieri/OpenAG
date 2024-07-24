@@ -8,5 +8,6 @@ typedef std::function<void(void)> VoidHandler;
 typedef std::function<String(void)> RtStringHandler;
 typedef std::function<bool(void)> RtBoolHandler;
 typedef std::function<void(String)> StringHandler;
+typedef std::function<double(void)> RtDoubleHandler;
 
 #endif

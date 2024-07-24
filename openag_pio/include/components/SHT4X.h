@@ -24,6 +24,11 @@ class SHT4X: public BaseComponent, public IPrometheusable {
     }
 
     String UniqueName() const override { return "SHT4X"; }
+
+    double GetAbsoluteHumidity() const {
+      return RHToAbsoluteHumidity(humidity.relative_humidity, temp.temperature);
+    }
+
   private:
     SHT4X(const SHT4X&) = delete;
     SHT4X& operator=(const SHT4X&) = delete;
@@ -31,6 +36,10 @@ class SHT4X: public BaseComponent, public IPrometheusable {
 
     bool error = false;
     sensors_event_t humidity, temp;
+    
+    static double RHToAbsoluteHumidity(double rh, double temp) {
+      return (6.112 * pow(10, (7.5 * temp / (237.7 + temp)))*rh*2.1674) / (273.15 + temp);
+    }
 
 };
 inline void SHT4X::Setup() {

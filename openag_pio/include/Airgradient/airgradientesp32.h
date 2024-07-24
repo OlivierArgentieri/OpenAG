@@ -53,6 +53,10 @@ inline Airgradientesp32::Airgradientesp32() {
     });
   };
   
+  sgp30.onRequestUpdateHumidity = [this]() {
+    return this->sht4x.GetAbsoluteHumidity();
+  };
+
   ESPWIFI::GetInstance().onSuccessfullConnection = [this](String ipaddress) {
     LOG_INFO("Connected to network");
     LOG_INFO(ipaddress);
@@ -79,10 +83,10 @@ inline Airgradientesp32::Airgradientesp32() {
   oled.pages.push_back(
     [this](SSD1306& SSD1306) {
       SSD1306.Clear()
-      .DisplayMessage("Tvoc:" + this->sgp30.GetTVOC(), false, 1, false)
-      .DisplayMessage("Co2:" + this->s8sensair.GetCO2(), false, 1, false, 64, 0)
-      .DisplayMessage("T:" + this->sht4x.GetTemperature(), false, 1, false, 0, 2)
-      .DisplayMessage("Hum:" + this->sht4x.GetHumidity() + "%" , false, 1, false, 64, 2)
+      .DisplayMessage("Tvoc: " + this->sgp30.GetTVOC(), false, 1, false)
+      .DisplayMessage("Co2: " + this->s8sensair.GetCO2(), false, 1, false, 62, 0)
+      .DisplayMessage("T: " + this->sht4x.GetTemperature(), false, 1, false, 0, 2)
+      .DisplayMessage("Hum: " + this->sht4x.GetHumidity() + "%" , false, 1, false, 62, 2)
       .Update();
   });
 }
